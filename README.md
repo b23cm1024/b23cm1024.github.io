@@ -241,17 +241,7 @@ Per-query breakdown:
 
 ---
 
-### Complete 9-Metric Evaluation (Novelty Notebook)
 
-| Method | IoU | Dice | BF1 | Prec | Rec | F1 | QS | Leak | Smooth |
-|--------|-----|------|-----|------|-----|----|----|------|--------|
-| SAM — Box (GT ref) | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 0.5519 | 0.0535 | 0.797 |
-| SAM — Point | 0.7943 | 0.8853 | 0.6001 | 0.8028 | 0.9867 | 0.8853 | 0.5551 | 0.0556 | 0.790 |
-| FS — Box raw | 0.6963 | 0.8210 | 0.4228 | 0.6968 | 0.9990 | 0.8210 | 0.5840 | 0.0451 | 0.793 |
-| FS — Point raw | 0.1747 | 0.2975 | 0.1208 | 0.1851 | 0.7576 | 0.2975 | 0.5587 | 0.0334 | 0.801 |
-| FS — Text raw | 0.1747 | 0.2975 | 0.1208 | 0.1851 | 0.7576 | 0.2975 | — | — | — |
-| FS — Box refined ✨ | 0.7123 | — | — | — | — | — | — | — | — |
-| **FS — Ensemble ✨** | **0.6963→0.7123** | — | — | — | — | — | — | — | — |
 
 ---
 
@@ -411,7 +401,6 @@ pip install opencv-python scipy matplotlib tqdm Pillow scikit-image
 
 <div align="center">
 
-Made with ❤️ as a Deep Learning course project.  
 Based on **FastSAM** (arXiv:2306.12156) by Zhao et al., 2023.
 
 </div>
