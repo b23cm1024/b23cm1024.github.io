@@ -75,13 +75,13 @@ Fast_Sam_DL_Project/
 │   ├── SAM vs FastSAM baseline comparison (all 3 prompts)
 │   ├── Inference timing dashboard
 │   ├── Multi-image IoU validation (5 diverse scenes)
-│   ├── ✨ NOVELTY 1: CLIP Multi-Query Text Ensemble
-│   ├── ✨ NOVELTY 2: 5-Stage Mask Refinement Pipeline
+│   ├──  NOVELTY 1: CLIP Multi-Query Text Ensemble
+│   ├──  NOVELTY 2: 5-Stage Mask Refinement Pipeline
 │   └── Grand comparison grid + quantitative metrics (9 metrics)
 │
 ├── 📓 FASTSAM_promptfusion.ipynb                   # Novelty 3: Prompt Fusion
 │   ├── SAM vs FastSAM standard segmentation
-│   └── ✨ NOVELTY 3: Dual-set prompt fusion with edge-aware confidence
+│   └──  NOVELTY 3: Dual-set prompt fusion with edge-aware confidence
 │
 ├── 📓 FASTSAM_Promptfusion_seg1.ipynb              # Prompt fusion (seg1 image variant)
 │
@@ -107,7 +107,7 @@ Fast_Sam_DL_Project/
 
 ## Novelties & Contributions
 
-### ✨ Novelty 1 — CLIP Multi-Query Text Ensemble
+###  Novelty 1 — CLIP Multi-Query Text Ensemble
 
 **Problem:** FastSAM's text prompt relies on CLIP to post-hoc select from pre-computed masks. A single query has very high variance — `"a dog"` may return IoU=0.175 while `"dog sitting"` returns IoU=0.696 on the exact same image.
 
@@ -127,7 +127,7 @@ Algorithm:
 
 ---
 
-### ✨ Novelty 2 — 5-Stage Mask Refinement Pipeline
+###  Novelty 2 — 5-Stage Mask Refinement Pipeline
 
 Applied universally to all FastSAM mask types (Box, Point, Text, Ensemble).
 
@@ -143,7 +143,7 @@ Applied universally to all FastSAM mask types (Box, Point, Text, Ensemble).
 
 ---
 
-### ✨ Novelty 3 — Prompt Fusion Architecture
+###  Novelty 3 — Prompt Fusion Architecture
 
 **Problem:** Both SAM and FastSAM merge multiple objects in a scene into a single mask when standard prompts are used. Neither model can separately segment a man and a dog that are physically overlapping in an image.
 
@@ -215,7 +215,7 @@ Evaluated on all **118 CrackForest images** in everything-mode (zero-shot, no fi
 | Baseline — `"a dog"` (single query) | 0.1747 | — |
 | Majority vote (≥50%) | 0.1747 | +0.00 pts |
 | Best single query — `"dog sitting"` | 0.6963 | **+52.16 pts** |
-| **Selected Ensemble Mask** ✨ | **0.6963** | **+52.16 pts** |
+| **Selected Ensemble Mask**  | **0.6963** | **+52.16 pts** |
 
 Per-query breakdown:
 
@@ -237,7 +237,7 @@ Per-query breakdown:
 | FS — Box | 0.6963 | **0.7123** | +1.60 pts ⬆ |
 | FS — Point | 0.1747 | **0.1896** | +1.49 pts ⬆ |
 | FS — Text | 0.1747 | **0.1903** | +1.55 pts ⬆ |
-| FS — Ensemble ✨ | 0.6963 | **0.7123** | +1.60 pts ⬆ |
+| FS — Ensemble  | 0.6963 | **0.7123** | +1.60 pts ⬆ |
 
 ---
 
@@ -249,7 +249,7 @@ Per-query breakdown:
 
 Evaluated on man-with-dog image. Ground truth built from SAM's high-quality masks for fairness.
 
-| Metric | SAM | FastSAM | **Prompt Fusion ✨** | Winner |
+| Metric | SAM | FastSAM | **Prompt Fusion ** | Winner |
 |--------|-----|---------|---------------------|--------|
 | IoU ↑ | 0.3007 | 0.4328 | **0.7738** | PF ★ (+157.3% vs SAM) |
 | Dice Score ↑ | 0.4624 | 0.6041 | **0.8725** | PF ★ (+88.7% vs SAM) |
@@ -343,16 +343,15 @@ pip install opencv-python scipy matplotlib tqdm Pillow scikit-image
 
 ## Key Conclusions
 
-```
-✅  SAM > FastSAM boundary quality (ViT global attention captures fine crack edges)
-✅  FastSAM Box/Point >> FastSAM Text (geometry-based selection beats post-hoc CLIP)
-✅  CLIP Ensemble: text IoU 0.175 → 0.696 (+52.2 pts) ← KEY RESULT
-✅  5-Stage Refinement improves every mask consistently (+1.5–1.6 IoU pts)
-✅  Prompt Fusion: IoU 0.774 vs SAM 0.301, enables per-instance separation
-⚡  FastSAM is 8–28× faster than SAM depending on hardware and dataset
-⚠️  FastSAM text (CLIP) is 30× slower than FastSAM Box — avoid raw text prompts
-🔧  Best text-prompt alternative: Grounded-SAM or LangSAM for production use
-```
+
+  SAM > FastSAM boundary quality (ViT global attention captures fine crack edges)
+  FastSAM Box/Point >> FastSAM Text (geometry-based selection beats post-hoc CLIP)
+  CLIP Ensemble: text IoU 0.175 → 0.696 (+52.2 pts) ← KEY RESULT
+  5-Stage Refinement improves every mask consistently (+1.5–1.6 IoU pts)
+  Prompt Fusion: IoU 0.774 vs SAM 0.301, enables per-instance separation
+  FastSAM is 8–28× faster than SAM depending on hardware and dataset
+  FastSAM text (CLIP) is 30× slower than FastSAM Box — avoid raw text prompts
+  Best text-prompt alternative: Grounded-SAM or LangSAM for production use
 
 ---
 
