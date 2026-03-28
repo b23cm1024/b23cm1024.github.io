@@ -343,15 +343,14 @@ pip install opencv-python scipy matplotlib tqdm Pillow scikit-image
 
 ## Key Conclusions
 
-
-  SAM > FastSAM boundary quality (ViT global attention captures fine crack edges)
-  FastSAM Box/Point >> FastSAM Text (geometry-based selection beats post-hoc CLIP)
-  CLIP Ensemble: text IoU 0.175 → 0.696 (+52.2 pts) ← KEY RESULT
-  5-Stage Refinement improves every mask consistently (+1.5–1.6 IoU pts)
-  Prompt Fusion: IoU 0.774 vs SAM 0.301, enables per-instance separation
-  FastSAM is 8–28× faster than SAM depending on hardware and dataset
-  FastSAM text (CLIP) is 30× slower than FastSAM Box — avoid raw text prompts
-  Best text-prompt alternative: Grounded-SAM or LangSAM for production use
+- SAM > FastSAM boundary quality (ViT global attention captures fine crack edges)
+- FastSAM Box/Point >> FastSAM Text (geometry-based selection beats post-hoc CLIP)
+- CLIP Ensemble: text IoU 0.175 → 0.696 (+52.2 pts) ← KEY RESULT
+- 5-Stage Refinement improves every mask consistently (+1.5–1.6 IoU pts)
+- Prompt Fusion: IoU 0.774 vs SAM 0.301, enables per-instance separation
+- FastSAM is 8–28× faster than SAM depending on hardware and dataset
+- FastSAM text (CLIP) is 30× slower than FastSAM Box — avoid raw text prompts
+- Best text-prompt alternative: Grounded-SAM or LangSAM for production use
 
 ---
 
